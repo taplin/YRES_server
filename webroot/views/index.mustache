@@ -1,0 +1,20 @@
+{{>header}}
+
+{{^authenticated}}
+<h1>Login Now</h1>
+{{/authenticated}}
+{{#authenticated}}
+{{#account}}
+<h1>Hi {{username}}!</h1>
+
+<p>Choose your Task</p>
+
+    <ul>
+    <li><a href="/admin/users">Admin Users List</a></li>
+    <li><a href="/admin/resources">Resource List</a></li>
+    <li><a href="/admin/newresource">Add New Resource</a></li>
+    </ul>
+{{/account}}
+{{/authenticated}}
+
+{{>footer}}

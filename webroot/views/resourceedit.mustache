@@ -1,0 +1,60 @@
+{{>header}}
+
+<h1>Resource Edit:</h1>
+<h3><a href="/admin/resources">Back to List</a></h3>
+{{#authenticated}}
+{{#edit_resource}}
+
+<form action="save" class="edit_form" id="{{id}}" method="POST">
+<input type="hidden" name="id" value="{{id}}" />
+
+<div class="large-3 columns gray">
+
+    <label>Select Categories</label>
+    {{#display_categories}}
+<input id="{{name}}" class="category_list" type="checkbox" name="category_list" value="{{id}}" {{#selected}}checked{{/selected}} >
+        <label for="category_list">{{label}}</label><br>
+    {{/display_categories}}
+
+</div>
+<div class="large-6 columns">
+    <div class="row">
+        <div class="large-12 columns ref_name">
+            <label >Resource Name</label>
+            <input name="name" type="text" placeholder="Title for the listing." value="{{name}}"/>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns blurb">
+            <label>Resource Web Link ( no HTTP:// etc )</label>
+            <input type="text" name="primary_link" placeholder="Web Link" value="{{primary_link}}"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns blurb">
+            <label>Edit the Blurb</label>
+            <textarea name="blurb" placeholder="Descriptive Paragraph" rows=8 >{{blurb}}</textarea>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="large-6 medium-6 columns ">
+            <label>Logo Name</label>
+            <input name="icon" type="text" placeholder="Icon Name" value="{{icon}}" />
+        </div>
+        <div class="large-6 medium-6 columns ">
+            <p > Please review your changes before submitting. </p>
+            <button type="submit" class="success button bottom" >Save Changes</button>
+        </div>
+    </div>
+</div>
+<div class="large-3 columns gray">
+.
+</div>
+{{/edit_resource}}
+</form>
+
+{{/authenticated}}
+{{>footer}}

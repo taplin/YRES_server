@@ -1,0 +1,61 @@
+{{>header}}
+
+{{^authenticated}}
+<h1>Welcome!</h1>
+{{/authenticated}}
+{{#authenticated}}
+
+<div class="large-4 medium-4 columns">
+    <h5>Try one of these buttons:</h5>
+    <ul >
+        <li ><a href="/admin/users" class="button" >Admin Users List</a></li>
+        <li ><a href="/admin/resources" class="button" >Resource List</a></li>
+        <li ><a href="/admin/newresource" class="button" >Add New Resource</a></li>
+    </ul>
+</div>
+
+<div id="main" class="large-8 medium-8 columns">
+    <!-- Grid Example -->
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="large-4 columns collapse">
+                <label>Select Category</label>
+                <select id="category_selection">
+                    <option value="All" selected> All Categories </option>
+                {{#categories}}
+                    <option value="{{name}}">{{label}}</option>
+                {{/categories}}
+                </select>
+            </div>
+            <div class="large-8 columns">
+                <div class="row collapse postfix-round">
+                    <label>Filter by Name</label>
+                    <div class="small-9 columns">
+                        <input type="text" placeholder="Value">
+                    </div>
+                    <div class="small-3 columns">
+                        <a href="#" class="button postfix">Filter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- example of Resource listing -->
+    {{#resources}}
+    <div class="row">
+    <!-- data-categories="{{display_categories}}" -->
+        <div class="large-12 columns "  >
+            <span class="primary callout large-8 columns" ><strong>{{name}}</strong></span>
+            <a href="resources/{{id}}" class="small-4 columns alert button float-right">Edit Btn</a>
+        </div>
+        <div class="large-12 columns edit_form"></div>
+    </div>
+    {{/resources}}
+    <!--end of listing -->
+
+</div>
+
+{{/authenticated}}
+
+{{>footer}}

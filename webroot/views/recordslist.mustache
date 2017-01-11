@@ -1,0 +1,22 @@
+{{>header}}
+
+{{^authenticated}}
+<h1>Welcome!</h1>
+{{/authenticated}}
+{{#authenticated}}
+{{#accounts}}
+<table>
+<tr>
+<form name="record{uniqueID}}" action="/admin/users/{{id}}" method="POST">
+    <td>
+    Name: <input name="username" id="username" value="{{username}}"></td>
+    <td>api_key: <input name="api_key" id="api_key" value="{{api_key_id}}"></td>
+    <td><button type="submit" class="btn btn-primary">Edit</button></td>
+</form>
+</tr>
+{{/accounts}}
+</table>
+{{/authenticated}}
+{{>footer}}
+
+

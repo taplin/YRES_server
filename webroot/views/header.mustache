@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YRES Admin</title>
+<link rel="stylesheet" href="/libs/css/app.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <h3 class="text-muted"><a href="/">YRES Admin</a></h3>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                {{^authenticated}}
+                <li role="presentation"><a href="/login">Log In</a></li>
+                {{/authenticated}}
+                {{#authenticated}}
+                <li role="presentation"><a href="javascript:;" onclick="var f=document.createElement('form');f.method='POST';f.action='/logout';f.submit();">Logout</a></li>
+                {{/authenticated}}
+            </ul>
+        </div>
+    </div>
+
+    {{#flash}}
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      {{flash}}
+    </div>
+    {{/flash}}
+    <div class="row">
+        
